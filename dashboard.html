@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title></head>
+<body>
+  <h2>Cycle Inventory</h2>
+  <form method="POST" action="/add_cycle">
+    <input type="text" name="brand" placeholder="Brand" required>
+    <input type="text" name="model" placeholder="Model" required>
+    <input type="number" name="quantity" placeholder="Quantity" required>
+    <input type="number" step="0.01" name="price" placeholder="Price" required>
+    <button type="submit">Add Cycle</button>
+  </form>
+
+  <ul>
+    {% for c in cycles %}
+      <li>{{ c.brand }} {{ c.model }} - {{ c.quantity }} units @ ₹{{ c.price }}
+          <a href="/delete/{{ c.id }}">Delete</a></li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
